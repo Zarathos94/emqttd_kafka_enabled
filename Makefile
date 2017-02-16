@@ -20,7 +20,7 @@ dep_emq_mod_presence     = git https://github.com/emqtt/emq-mod-presence master
 dep_emq_mod_retainer     = git https://github.com/emqtt/emq-mod-retainer master
 dep_emq_mod_rewrite      = git https://github.com/emqtt/emq-mod-rewrite master
 dep_emq_mod_subscription = git https://github.com/emqtt/emq-mod-subscription master
-dep_emqttd_plugin_kafka_bridge = git https://github.com/Zarathos94/emqttd_plugin_kafka_bridge.git master
+dep_emqttd_plugin_kafka_bridge = git https://github.com/Zarathos94/emqttd_kafka_plugin_rev.git master
 
 # emq auth/acl plugins
 dep_emq_auth_clientid   = git https://github.com/emqtt/emq-auth-clientid master
