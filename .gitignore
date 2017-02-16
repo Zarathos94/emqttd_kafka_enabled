@@ -1,0 +1,16 @@
+.eunit
+deps
+*.o
+*.beam
+*.plt
+erl_crash.dump
+ebin
+_rel/*
+.concrete/DEV_MODE
+.rebar
+.erlang.mk/
+etc/plugins/
+data/configs/*.config
+data/configs/*.conf
+data/configs/*.args
+rel/
