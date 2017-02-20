@@ -10,7 +10,3 @@ _rel/*
 .rebar
 .erlang.mk/
 etc/plugins/
-data/configs/*.config
-data/configs/*.conf
-data/configs/*.args
-rel/

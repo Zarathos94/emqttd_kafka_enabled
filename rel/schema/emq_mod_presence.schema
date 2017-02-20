@@ -1,0 +1,13 @@
+%%-*- mode: erlang -*-
+%% emq_mod_presence config mapping
+{mapping, "module.presence", "emq_mod_presence.enable", [
+  {default, on},
+  {datatype, flag}
+]}.
+
+{mapping, "module.presence.qos", "emq_mod_presence.qos", [
+  {default, 0},
+  {datatype, integer},
+  {validators, ["range:0-2"]}
+]}.
+
