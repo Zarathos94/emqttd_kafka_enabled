@@ -39,19 +39,19 @@ dep_emq_plugin_template = git https://github.com/emqtt/emq-plugin-template v2.1.
 include erlang.mk
 
 plugins:
-        @rm -rf rel
-        @mkdir -p rel/conf/plugins/ rel/schema/
-        @for conf in $(DEPS_DIR)/*/etc/*.conf* ; do \
-                if [ "emq.conf" = "$${conf##*/}" ] ; then \
-                        cp $${conf} rel/conf/ ; \
-                elif [ "acl.conf" = "$${conf##*/}" ] ; then \
-                        cp $${conf} rel/conf/ ; \
-                else \
-                        cp $${conf} rel/conf/plugins ; \
-                fi ; \
-        done
-        @for schema in $(DEPS_DIR)/*/priv/*.schema ; do \
-                cp $${schema} rel/schema/ ; \
-        done
+	@rm -rf rel
+	@mkdir -p rel/conf/plugins/ rel/schema/
+	@for conf in $(DEPS_DIR)/*/etc/*.conf* ; do \
+	if [ "emq.conf" = "$${conf##*/}" ] ; then \
+			cp $${conf} rel/conf/ ; \
+		elif [ "acl.conf" = "$${conf##*/}" ] ; then \
+			cp $${conf} rel/conf/ ; \
+		else \
+			cp $${conf} rel/conf/plugins ; \
+		fi ; \
+	done
+	@for schema in $(DEPS_DIR)/*/priv/*.schema ; do \
+		cp $${schema} rel/schema/ ; \
+	done
 
 app:: plugins
