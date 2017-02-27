@@ -42,11 +42,7 @@ plugins:
 	@rm -rf rel
 	@mkdir -p rel/conf/plugins/ rel/schema/
 	@for conf in $(DEPS_DIR)/*/etc/*.conf* ; do \
-#<<<<<<< HEAD
-	#if [ "emq.conf" = "$${conf##*/}" ] ; then \
-#=======
 		if [ "emq.conf" = "$${conf##*/}" ] ; then \
-#>>>>>>> c127fb16c299a6129a4db234bb039b5fb4a90cf0
 			cp $${conf} rel/conf/ ; \
 		elif [ "acl.conf" = "$${conf##*/}" ] ; then \
 			cp $${conf} rel/conf/ ; \
