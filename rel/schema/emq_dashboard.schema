@@ -76,7 +76,7 @@
       end,
       case cuttlefish:conf_get("dashboard.listener.https", Conf, undefined) of
           undefined -> [];
-          HttpsPort -> [{https, HttpsPort, [{ssl, SslOpts("dashboard.listener.https")} | Opts("dashboard.listener.https")]}]
+          HttpsPort -> [{https, HttpsPort, [{sslopts, SslOpts("dashboard.listener.https")} | Opts("dashboard.listener.https")]}]
       end])
 end}.
 
