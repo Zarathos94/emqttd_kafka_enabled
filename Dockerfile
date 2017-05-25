@@ -75,8 +75,6 @@ RUN apk --no-cache add \
         && mv rebar /usr/sbin/rebar \
     && git clone https://github.com/Zarathos94/emqttd_kafka_enabled.git /emqttd \
     && cd /emqttd \
-    && git submodule add https://github.com/Zarathos94/emqttd_kafka_plugin_rev.git plugins/emqttd_plugin_kafka_bridge \
-    && git submodule update --remote --init plugins/emqttd_plugin_kafka_bridge \ 
     && make \
     && mkdir /opt && mv /emqttd/_rel/emqttd /opt/emqttd \
     && cd / && rm -rf /emqttd \
