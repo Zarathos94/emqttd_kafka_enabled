@@ -6,13 +6,14 @@ ENV EMQ_VERSION=v2.1
 
 ADD ./start.sh /start.sh
 
-RUN apk --no-cache add \
-        gcc \
+RUN set -ex \
+    # add build deps, remove after build
+    && apk --no-cache add --virtual .build-deps \
         build-base \
-        ncurses-terminfo-base \
-        ncurses-terminfo \
-        ncurses-libs \
-        readline \
+        # gcc \
+        # make \
+        bsd-compat-headers \
+        perl \
         erlang \
         erlang-public-key \
         erlang-syntax-tools \
@@ -20,7 +21,7 @@ RUN apk --no-cache add \
         erlang-gs \
         erlang-observer \
         erlang-ssh \
-        erlang-ose \
+        #erlang-ose \
         erlang-cosfiletransfer \
         erlang-runtime-tools \
         erlang-os-mon \
@@ -47,10 +48,10 @@ RUN apk --no-cache add \
         erlang-hipe \
         erlang-ic \
         erlang-eunit \
-        erlang-webtool \
+        #erlang-webtool \
         erlang-mnesia \
         erlang-erl-interface \
-        erlang-test-server \
+        #erlang-test-server \
         erlang-sasl \
         erlang-jinterface \
         erlang-kernel \
@@ -66,13 +67,17 @@ RUN apk --no-cache add \
         erlang-parsetools \
         erlang-cosevent \
         erlang-compiler \
+    # add fetch deps, remove after build
+    && apk add --no-cache --virtual .fetch-deps \
         git \
-        make \
-        perl \
-	    && git clone git://github.com/rebar/rebar.git \
-        && cd rebar \
-        && ./bootstrap \
-        && mv rebar /usr/sbin/rebar \
+        wget \
+    # add run deps, never remove
+    && apk add --no-cache --virtual .run-deps \
+        ncurses-terminfo-base \
+        ncurses-terminfo \
+        ncurses-libs \
+        readline \
+    # add latest rebar
     && git clone https://github.com/Zarathos94/emqttd_kafka_enabled.git /emqttd \
     && cd /emqttd \
     && make \
