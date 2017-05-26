@@ -4,6 +4,7 @@
 *.plt
 erl_crash.dump
 ebin
+deps/*
 _rel/*
 .concrete/DEV_MODE
 .rebar

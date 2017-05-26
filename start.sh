@@ -174,13 +174,23 @@ echo $(echo "${EMQ_LOADED_PLUGINS}."|sed -e "s/^[^A-Za-z0-9_]\{1,\}//g"|sed -e "
 
 ## TODO: Add plugins settings
 
-if [ x"${EMQTTD_KAFKA_HOST}" = x ]
-then
-EMQTTD_KAFKA_HOST="kafka"
-echo "EMQTTD_KAFKA_HOST=${EMQTTD_KAFKA_HOST}"
-fi
-sed -i "/bootstrap_broker/s/127.0.0.1/${EMQTTD_KAFKA_HOST}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
-
+#if [ x"${RMQ_HOST}" = x ]
+#then
+RMQ_HOST="35.156.106.188"
+RMQ_USER="admin"
+RMQ_PASS="admin"
+RMQ_VHOST"/"
+echo "RMQ_HOST=${RMQ_HOST}"
+echo "RMQ_USER=${RMQ_USER}"
+echo "RMQ_PASS=${RMQ_PASS}"
+echo "RMQ_PORT=${RMQ_PORT}"
+echo "RMQ_VHOST=${RMQ_VHOST}"
+#fi
+sed -i "/username/s/admin/${RMQ_USER}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
+sed -i "/password/s/admin/${RMQ_PASS}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
+sed -i "/host/s/admin/${RMQ_HOST}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
+sed -i "/port/s/admin/${RMQ_PORT}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
+sed -i "/virtualhost/s/admin/${RMQ_VHOST}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
 ## EMQ Main script
 # Start and run emqttd, and when emqttd crashed, this container will stop
 
@@ -206,13 +216,16 @@ echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd start'
 # warning: never use infinite loops such as `` while true; do sleep 1000; done`` here
 #          you must let user know emqtt crashed and stop this container,
 #          and docker dispatching system can known and restart this container.
+sleep 20
+/opt/emqttd/bin/emqttd_ctl plugins load emqttd_plugin_kafka_bridge
 IDLE_TIME=0
 while [ x$(/opt/emqttd/bin/emqttd_ctl status |grep 'is running'|awk '{print $1}') != x ]
-do  
+do
     IDLE_TIME=`expr ${IDLE_TIME} + 1`
     echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd running'
     sleep 20
 done
+
 
 tail $(ls /opt/emqttd/log/*)
 
