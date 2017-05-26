@@ -217,7 +217,7 @@ echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd start'
 # warning: never use infinite loops such as `` while true; do sleep 1000; done`` here
 #          you must let user know emqtt crashed and stop this container,
 #          and docker dispatching system can known and restart this container.
-sleep 20
+sleep 10
 /opt/emqttd/bin/emqttd_ctl plugins load emqttd_plugin_kafka_bridge
 IDLE_TIME=0
 while [ x$(/opt/emqttd/bin/emqttd_ctl status |grep 'is running'|awk '{print $1}') != x ]
