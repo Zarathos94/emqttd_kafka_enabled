@@ -189,8 +189,8 @@ echo "RMQ_PORT=${RMQ_PORT}"
 #fi
 sed -i "/username/s/admin/${RMQ_USER}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
 sed -i "/password/s/admin/${RMQ_PASS}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
-sed -i "/host/s/admin/${RMQ_HOST}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
-sed -i "/port/s/admin/${RMQ_PORT}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
+sed -i "/host/s/10.1.7.130/${RMQ_HOST}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
+sed -i "/port/s/5672/${RMQ_PORT}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
 #sed -i "/virtualhost/s/admin/${RMQ_VHOST}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
 ## EMQ Main script
 # Start and run emqttd, and when emqttd crashed, this container will stop
@@ -219,6 +219,7 @@ echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd start'
 #          and docker dispatching system can known and restart this container.
 sleep 10
 /opt/emqttd/bin/emqttd_ctl plugins load emqttd_plugin_kafka_bridge
+echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd loaded plugin for RabbitMQ Bridge'
 IDLE_TIME=0
 while [ x$(/opt/emqttd/bin/emqttd_ctl status |grep 'is running'|awk '{print $1}') != x ]
 do
