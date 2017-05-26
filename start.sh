@@ -176,7 +176,7 @@ echo $(echo "${EMQ_LOADED_PLUGINS}."|sed -e "s/^[^A-Za-z0-9_]\{1,\}//g"|sed -e "
 
 #if [ x"${RMQ_HOST}" = x ]
 #then
-RMQ_HOST="35.156.106.188"
+RMQ_HOST="localhost"
 RMQ_USER="admin"
 RMQ_PASS="admin"
 RMQ_VHOST="/"
