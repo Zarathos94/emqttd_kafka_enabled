@@ -176,9 +176,9 @@ echo $(echo "${EMQ_LOADED_PLUGINS}."|sed -e "s/^[^A-Za-z0-9_]\{1,\}//g"|sed -e "
 
 #if [ x"${RMQ_HOST}" = x ]
 #then
-RMQ_HOST="172.17.0.1"
-RMQ_USER="admin"
-RMQ_PASS="irfan"
+RMQ_HOST="172.31.21.41"
+RMQ_USER="irfan"
+RMQ_PASS="062315781"
 #RMQ_VHOST="/"
 RMQ_PORT="5672"
 echo "RMQ_HOST=${RMQ_HOST}"
@@ -220,6 +220,7 @@ echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd start'
 sleep 10
 /opt/emqttd/bin/emqttd_ctl plugins load emqttd_plugin_kafka_bridge
 echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd loaded plugin for RabbitMQ Bridge'
+
 IDLE_TIME=0
 while [ x$(/opt/emqttd/bin/emqttd_ctl status |grep 'is running'|awk '{print $1}') != x ]
 do
