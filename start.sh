@@ -176,7 +176,7 @@ echo $(echo "${EMQ_LOADED_PLUGINS}."|sed -e "s/^[^A-Za-z0-9_]\{1,\}//g"|sed -e "
 
 #if [ x"${RMQ_HOST}" = x ]
 #then
-RMQ_HOST="ip-10-2-6-90.eu-west-1.compute.internal"
+RMQ_HOST="rmq"
 RMQ_USER="realtime"
 RMQ_PASS="realtime"
 #RMQ_VHOST="/"
