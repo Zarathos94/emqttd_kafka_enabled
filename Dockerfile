@@ -92,7 +92,7 @@ RUN set -ex \
 
 WORKDIR /opt/emqttd
 
-ARG RMQ__HOST="172.17.0.1"
+ARG RMQ__HOST="10.0.75.1"
 ARG RMQ__PORT=5672
 ARG RMQ__USER="admin"
 ARG RMQ__PASS="admin"
