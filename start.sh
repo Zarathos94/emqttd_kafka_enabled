@@ -181,10 +181,11 @@ echo $(echo "${EMQ_LOADED_PLUGINS}."|sed -e "s/^[^A-Za-z0-9_]\{1,\}//g"|sed -e "
 #RMQ_PASS="realtime"
 #RMQ_VHOST="/"
 #RMQ_PORT="5672"
-RMQ_HOST=$(RMQ_HOST)
-RMQ_USER=$(RMQ_USER)
-RMQ_PORT=$(RMQ_PORT)
-RMQ_PASS=$(RMQ_PASS)
+echo 'Loaded RMQ Config [HOST: $(RMQ__HOST) | PORT: $(RMQ__PORT) | USER: $(RMQ__USER) | PASS : $(RMQ__PASS)]'
+RMQ_HOST=$(RMQ__HOST)
+RMQ_USER=$(RMQ__USER)
+RMQ_PORT=$(RMQ__PORT)
+RMQ_PASS=$(RMQ__PASS)
 echo "RMQ_HOST=${RMQ_HOST}"
 echo "RMQ_USER=${RMQ_USER}"
 echo "RMQ_PASS=${RMQ_PASS}"
