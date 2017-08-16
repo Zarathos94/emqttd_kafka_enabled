@@ -62,8 +62,13 @@ main(Args) ->
                           [RpcArgs], 60000) of
                 ok ->
                     ok;
+                {error, cmd_not_found} ->
+                    halt(1);
+                {error, Reason} ->
+                    io:format("RPC to ~s error: ~p\n", [TargetNode, Reason]),
+                    halt(1);
                 {badrpc, Reason} ->
-                    io:format("RPC to ~p failed: ~p\n", [TargetNode, Reason]),
+                    io:format("RPC to ~s failed: ~p\n", [TargetNode, Reason]),
                     halt(1);
                 _ ->
                     halt(1)
@@ -182,13 +187,15 @@ create_mnesia_dir(DataDir, NodeName) ->
     io:format("~s", [MnesiaDir]).
 
 mergeconf(EmqCfg, PluginsEtc, DestDir) ->
+    filelib:ensure_dir(DestDir),%% support brew on macosx
     AppConf = filename:join(DestDir, appconf()),
     case file:open(AppConf, [write]) of
         {ok, DestFd} ->
             CfgFiles = [EmqCfg | cfgfiles(PluginsEtc)],
             lists:foreach(fun(CfgFile) ->
                             {ok, CfgData} = file:read_file(CfgFile),
-                            file:write(DestFd, CfgData)
+                            file:write(DestFd, CfgData),
+                            file:write(<<"\n">>, CfgData)
                           end, CfgFiles),
             file:close(DestFd),
             io:format("~s", [AppConf]),
@@ -274,4 +281,3 @@ print_issue({warning, Warning}) ->
     io:format(standard_error, "Warning in emqttd.config: ~s~n", [Warning]);
 print_issue({error, Error}) ->
     io:format(standard_error, "Error in emqttd.config: ~s~n", [Error]).
-
