@@ -197,7 +197,7 @@ sed -i "/port/s/5672/${RMQ__PORT}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_
 ## EMQ Main script
 # Start and run emqttd, and when emqttd crashed, this container will stop
 
-/opt/emqttd/bin/emqttd start
+/opt/emqttd/bin/emqttd console
 
 # wait and ensure emqttd status is running
 WAIT_TIME=0
