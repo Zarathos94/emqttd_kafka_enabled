@@ -183,7 +183,7 @@ echo $(echo "${EMQ_LOADED_PLUGINS}."|sed -e "s/^[^A-Za-z0-9_]\{1,\}//g"|sed -e "
 #RMQ_PORT="5672"
 RMQ_HOST=$(RMQ_HOST)
 RMQ_USER=$(RMQ_USER)
-RMQ_PORT=5672
+RMQ_PORT=$(RMQ_PORT)
 RMQ_PASS=$(RMQ_PASS)
 echo "RMQ_HOST=${RMQ_HOST}"
 echo "RMQ_USER=${RMQ_USER}"

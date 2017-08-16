@@ -92,7 +92,10 @@ RUN set -ex \
 
 WORKDIR /opt/emqttd
 
-
+ARG RMQ_HOST=10.0.75.1
+ARG RMQ_PORT=5672
+ARG RMQ_USER=admin
+ARG RMQ_PASS=admin
 # start emqttd and initial environments
 CMD ["/opt/emqttd/start.sh"]
 
