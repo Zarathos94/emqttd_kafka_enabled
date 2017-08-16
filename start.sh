@@ -146,18 +146,18 @@ fi
 #/opt/emqttd/bin/emqttd console
 
 # wait and ensure emqttd status is running
-WAIT_TIME=0
-while [ x$(/opt/emqttd/bin/emqttd_ctl status |grep 'is running'|awk '{print $1}') = x ]
-do
-    sleep 1
-    echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:waiting emqttd'
-    WAIT_TIME=`expr ${WAIT_TIME} + 1`
-    if [ ${WAIT_TIME} -gt 5 ]
-    then
-        echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:timeout error'
-        exit 1
-    fi
-done
+#WAIT_TIME=0
+#while [ x$(/opt/emqttd/bin/emqttd_ctl status |grep 'is running'|awk '{print $1}') = x ]
+#do
+#    sleep 1
+#    echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:waiting emqttd'
+#    WAIT_TIME=`expr ${WAIT_TIME} + 1`
+#    if [ ${WAIT_TIME} -gt 5 ]
+#    then
+#        echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:timeout error'
+#        exit 1
+#    fi
+#done
 
 
 echo "['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd start"
@@ -180,15 +180,15 @@ echo "['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd start"
 #          and docker dispatching system can known and restart this container.
 sleep 10
 #/opt/emqttd/bin/emqttd_ctl plugins load emqttd_plugin_kafka_bridge
-echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd loaded plugin for RabbitMQ Bridge'
+#echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd loaded plugin for RabbitMQ Bridge'
 
-IDLE_TIME=0
-while [ x$(/opt/emqttd/bin/emqttd_ctl status |grep 'is running'|awk '{print $1}') != x ]
-do
-    IDLE_TIME=`expr ${IDLE_TIME} + 1`
-    echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd running'
-    sleep 20
-done
+#IDLE_TIME=0
+#while [ x$(/opt/emqttd/bin/emqttd_ctl status |grep 'is running'|awk '{print $1}') != x ]
+#do
+#    IDLE_TIME=`expr ${IDLE_TIME} + 1`
+#    echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd running'
+#    sleep 20
+#done
 
 
 tail $(ls /opt/emqttd/log/*)
