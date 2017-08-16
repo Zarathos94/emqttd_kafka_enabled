@@ -142,7 +142,7 @@ if [[ ! -z "$EMQ_LOADED_PLUGINS" ]]; then
 fi
 
 
-/opt/emqttd/bin/emqttd foreground &
+/opt/emqttd/bin/emqttd console
 #/opt/emqttd/bin/emqttd console
 
 # wait and ensure emqttd status is running
