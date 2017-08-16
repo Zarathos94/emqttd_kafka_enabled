@@ -181,21 +181,21 @@ echo $(echo "${EMQ_LOADED_PLUGINS}."|sed -e "s/^[^A-Za-z0-9_]\{1,\}//g"|sed -e "
 #RMQ_PASS="realtime"
 #RMQ_VHOST="/"
 #RMQ_PORT="5672"
-echo 'Loaded RMQ Config [HOST: $(RMQ__HOST) | PORT: $(RMQ__PORT) | USER: $(RMQ__USER) | PASS : $(RMQ__PASS)]'
-RMQ_HOST=$(RMQ__HOST)
-RMQ_USER=$(RMQ__USER)
-RMQ_PORT=$(RMQ__PORT)
-RMQ_PASS=$(RMQ__PASS)
-echo "RMQ_HOST=${RMQ_HOST}"
-echo "RMQ_USER=${RMQ_USER}"
-echo "RMQ_PASS=${RMQ_PASS}"
-echo "RMQ_PORT=${RMQ_PORT}"
+echo 'Loaded RMQ Config [HOST: '${RMQ__HOST}' | PORT: '${RMQ__PORT}' | USER: '${RMQ__USER}' | PASS : '${RMQ__PASS}']'
+RMQ__HOST=$(RMQ__HOST)
+RMQ__USER=$(RMQ__USER)
+RMQ__PORT=$(RMQ__PORT)
+RMQ__PASS=$(RMQ__PASS)
+echo "RMQ_HOST=${RMQ__HOST}"
+echo "RMQ_USER=${RMQ__USER}"
+echo "RMQ_PASS=${RMQ__PASS}"
+echo "RMQ_PORT=${RMQ__PORT}"
 #echo "RMQ_VHOST=${RMQ_VHOST}"
 #fi
-sed -i "/username/s/admin/${RMQ_USER}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
-sed -i "/password/s/admin/${RMQ_PASS}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
-sed -i "/host/s/10.1.7.130/${RMQ_HOST}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
-sed -i "/port/s/5672/${RMQ_PORT}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
+sed -i "/username/s/admin/${RMQ__USER}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
+sed -i "/password/s/admin/${RMQ__PASS}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
+sed -i "/host/s/10.1.7.130/${RMQ__HOST}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
+sed -i "/port/s/5672/${RMQ__PORT}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
 #sed -i "/virtualhost/s/admin/${RMQ_VHOST}/" /opt/emqttd/etc/plugins/emqttd_plugin_kafka_bridge.config
 ## EMQ Main script
 # Start and run emqttd, and when emqttd crashed, this container will stop
