@@ -179,7 +179,7 @@ echo "['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd start"
 #          you must let user know emqtt crashed and stop this container,
 #          and docker dispatching system can known and restart this container.
 sleep 10
-/opt/emqttd/bin/emqttd_ctl plugins load emqttd_plugin_kafka_bridge
+#/opt/emqttd/bin/emqttd_ctl plugins load emqttd_plugin_kafka_bridge
 echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd loaded plugin for RabbitMQ Bridge'
 
 IDLE_TIME=0
