@@ -176,11 +176,15 @@ echo $(echo "${EMQ_LOADED_PLUGINS}."|sed -e "s/^[^A-Za-z0-9_]\{1,\}//g"|sed -e "
 
 #if [ x"${RMQ_HOST}" = x ]
 #then
-RMQ_HOST="10.1.7.21"
-RMQ_USER="realtime"
-RMQ_PASS="realtime"
+#RMQ_HOST="10.1.7.21"
+#RMQ_USER="realtime"
+#RMQ_PASS="realtime"
 #RMQ_VHOST="/"
-RMQ_PORT="5672"
+#RMQ_PORT="5672"
+RMQ_HOST=$(RMQ_HOST)
+RMQ_USER=$(RMQ_USER)
+RMQ_PORT=5672
+RMQ_PASS=$(RMQ_PASS)
 echo "RMQ_HOST=${RMQ_HOST}"
 echo "RMQ_USER=${RMQ_USER}"
 echo "RMQ_PASS=${RMQ_PASS}"
