@@ -164,16 +164,16 @@ echo "['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd start"
 
 # Run cluster script
 
-if [[ -x "./cluster.sh" ]]; then
-    ./cluster.sh &
-fi
+#if [[ -x "./cluster.sh" ]]; then
+ #   ./cluster.sh &
+#fi
 
 # Join an exist cluster
 
-if [[ ! -z "$EMQ_JOIN_CLUSTER" ]]; then
-    echo "['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd try join $EMQ_JOIN_CLUSTER"
-    /opt/emqttd/bin/emqttd_ctl cluster join $EMQ_JOIN_CLUSTER &
-fi
+#if [[ ! -z "$EMQ_JOIN_CLUSTER" ]]; then
+#    echo "['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd try join $EMQ_JOIN_CLUSTER"
+#    /opt/emqttd/bin/emqttd_ctl cluster join $EMQ_JOIN_CLUSTER &
+#fi
 # monitor emqttd is running, or the docker must stop to let docker PaaS know
 # warning: never use infinite loops such as `` while true; do sleep 1000; done`` here
 #          you must let user know emqtt crashed and stop this container,
