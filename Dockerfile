@@ -5,7 +5,6 @@ MAINTAINER Huang Rui <vowstar@gmail.com>
 ENV EMQ_VERSION=v2.1
 
 ADD ./start.sh /start.sh
-
 RUN set -ex \
     # add build deps, remove after build
     && apk --no-cache add --virtual .build-deps \
@@ -99,7 +98,7 @@ ARG RMQ__PASS="admin"
 # start emqttd and initial environments
 CMD ["/opt/emqttd/start.sh"]
 
-VOLUME ["/opt/emqttd/log", "/opt/emqttd/data", "/opt/emqttd/plugins", "/opt/emqttd/etc"]
+VOLUME ["/opt/emqttd/log", "/opt/emqttd/data", "/opt/emqttd/lib", "/opt/emqttd/etc"]
 
 # emqttd will occupy these port:
 # - 1883 port for MQTT
