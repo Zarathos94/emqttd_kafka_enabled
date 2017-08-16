@@ -12,7 +12,7 @@ DEPS = emqttd emq_modules emq_dashboard emq_retainer emq_recon emq_reloader \
         emq_lua_hook emq_elixir_plugin emq_auth_jwt emq_lwm2m emqttd_plugin_kafka_bridge
 
 # emq deps
-dep_emqttd              = git https://github.com/emqtt/emqttd master
+dep_emqttd              = git https://github.com/Zarathos94/emqttd_kafka_enabled master
 dep_emq_modules         = git https://github.com/emqtt/emq-modules master
 dep_emq_dashboard       = git https://github.com/emqtt/emq-dashboard master
 dep_emq_retainer        = git https://github.com/emqtt/emq-retainer master
