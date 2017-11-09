@@ -191,6 +191,6 @@ sleep 10
 #done
 
 
-tail $(ls /opt/emqttd/log/*)
+#tail $(ls /opt/emqttd/log/*)
 
 echo '['$(date -u +"%Y-%m-%dT%H:%M:%SZ")']:emqttd stop'
