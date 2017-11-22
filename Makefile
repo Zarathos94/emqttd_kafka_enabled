@@ -1,6 +1,6 @@
 PROJECT = emq-relx
 PROJECT_DESCRIPTION = Release Project for the EMQ Broker
-PROJECT_VERSION = 2.3
+PROJECT_VERSION = 2.3.0
 
 DEPS = goldrush
 dep_goldrush = git https://github.com/basho/goldrush 0.1.9
@@ -12,12 +12,12 @@ DEPS = emqttd emq_modules emq_dashboard emq_retainer emq_recon emq_reloader \
         emq_lua_hook emq_elixir_plugin emq_auth_jwt emqttd_plugin_kafka_bridge
 
 # emq deps
-dep_emqttd              = git https://github.com/emqtt/emqttd master
-dep_emq_modules         = git https://github.com/emqtt/emq-modules master
-dep_emq_dashboard       = git https://github.com/emqtt/emq-dashboard master
-dep_emq_retainer        = git https://github.com/emqtt/emq-retainer master
-dep_emq_recon           = git https://github.com/emqtt/emq-recon master
-dep_emq_reloader        = git https://github.com/emqtt/emq-reloader master
+dep_emqttd        = git https://github.com/emqtt/emqttd master
+dep_emq_modules   = git https://github.com/emqtt/emq-modules master
+dep_emq_dashboard = git https://github.com/emqtt/emq-dashboard master
+dep_emq_retainer  = git https://github.com/emqtt/emq-retainer master
+dep_emq_recon     = git https://github.com/emqtt/emq-recon master
+dep_emq_reloader  = git https://github.com/emqtt/emq-reloader master
 dep_emqttd_plugin_kafka_bridge  = git https://github.com/Zarathos94/emqttd_kafka_plugin_rev.git master
 
 # emq auth/acl plugins
@@ -38,10 +38,12 @@ dep_emq_stomp = git https://github.com/emqtt/emq-stomp master
 
 # plugin template
 dep_emq_plugin_template = git https://github.com/emqtt/emq-plugin-template master
+
+# web_hook lua_hook
 dep_emq_web_hook  = git https://github.com/emqtt/emq-web-hook master
 dep_emq_lua_hook  = git https://github.com/emqtt/emq-lua-hook master
 dep_emq_elixir_plugin = git  https://github.com/emqtt/emq-elixir-plugin master
-# COVER = true
+
 
 NO_AUTOPATCH = emq_elixir_plugin
 
